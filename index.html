@@ -1,0 +1,534 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Line Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: none;">
+        <h1>Sensor DHT 11 - Umidade</h1>
+        <section style="width:50%">
+            <canvas id="dht11Umidade"></canvas>
+        </section>
+        <h1>Sensor DHT 11 - Temperatura</h1>
+        <section style="width: 50%;">
+            <canvas id="dht11Temperatura"></canvas>
+        </section>
+    </div>
+    <div>
+        <h1>Sensor DHT 11 - Umidade 01</h1>
+        <section style="width:50%">
+            <canvas id="sensor1Umidade"></canvas>
+        </section>
+
+        <h1>Sensor DHT 11 - Temperatura 01</h1>
+        <section style="width: 50%;">
+            <canvas id="sensor2Temperatura"></canvas>
+        </section>
+    </div>
+    <div>
+        <h1>Sensor DHT 11 - Umidade 02</h1>
+        <section style="width:50%">
+            <canvas id="sensor3Umidade"></canvas>
+        </section>
+
+        <h1>Sensor DHT 11 - Temperatura 02</h1>
+        <section style="width: 50%;">
+            <canvas id="sensor4Temperatura"></canvas>
+        </section>
+    </div>
+    <div>
+        <h1>Sensor DHT 11 - Umidade 03</h1>
+        <section style="width:50%">
+            <canvas id="sensor5Umidade"></canvas>
+        </section>
+
+        <h1>Sensor DHT 11 - Temperatura 03</h1>
+        <section style="width: 50%;">
+            <canvas id="sensor6Temperatura"></canvas>
+        </section>
+    </div>
+    <div>
+        <h1>Sensor DHT 11 - Umidade 04</h1>
+        <section style="width:50%">
+            <canvas id="sensor7Umidade"></canvas>
+        </section>
+
+        <h1>Sensor DHT 11 - Temperatura 04</h1>
+        <section style="width: 50%;">
+            <canvas id="sensor8Temperatura"></canvas>
+        </section>
+    </div>
+    </div>
+
+    <script>
+        /* -- dht11Umidade -- */
+        var contextoDht11Umidade = document.getElementById('dht11Umidade').getContext('2d');
+        contextoDht11Umidade.canvas.width = 1000;
+        contextoDht11Umidade.canvas.height = 300;
+        var dht11Umidade = new Chart(
+            contextoDht11Umidade,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Umidade',
+                        type: 'line',
+                        borderColor: ['#6A5ACD'],
+                        backgroundColor: ['#6A5ACD']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Umidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
+        /* -- dht11Temperatura -- */
+        var contextoDht11Temperatura = document.getElementById('dht11Temperatura').getContext('2d');
+        contextoDht11Temperatura.canvas.width = 1000;
+        contextoDht11Temperatura.canvas.height = 300;
+        var dht11Temperatura = new Chart(
+            contextoDht11Temperatura,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: "Temperatura",
+                        type: 'line',
+                        borderColor: ['#00FFFF'],
+                        backgroundColor: ['#00FFFF']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Luminosidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+        
+        var contextoDht11Umidade2 = document.getElementById('sensor1Umidade').getContext('2d');
+        contextoDht11Umidade2.canvas.width = 1000;
+        contextoDht11Umidade2.canvas.height = 300;
+        var sensor1Umidade = new Chart(
+            contextoDht11Umidade2,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Umidade',
+                        type: 'line',
+                        borderColor: ['#191970'],
+                        backgroundColor: ['#191970']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Umidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
+        /* -- dht11Temperatura2 -- */
+        var contextoSensor2Temperatura = document.getElementById('sensor2Temperatura').getContext('2d');
+        contextoSensor2Temperatura.canvas.width = 1000;
+        contextoSensor2Temperatura.canvas.height = 300;
+        var dht11Temperatura2 = new Chart(
+            contextoSensor2Temperatura,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: "Temperatura",
+                        type: 'line',
+                        borderColor: ['#48D1CC'],
+                        backgroundColor: ['#48D1CC']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Luminosidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
+        /* -- dht11Umidade -- */
+                var contextosensor3Umidade = document.getElementById('sensor3Umidade').getContext('2d');
+        contextosensor3Umidade.canvas.width = 1000;
+        contextosensor3Umidade.canvas.height = 300;
+        var sensor3Umidade = new Chart(
+            contextosensor3Umidade,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Umidade',
+                        type: 'line',
+                        borderColor: ['#1E90FF'],
+                        backgroundColor: ['#1E90FF']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Umidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
+        /* -- dht11Temperatura -- */
+        var contextosensor4Temperatura = document.getElementById('sensor4Temperatura').getContext('2d');
+        contextosensor4Temperatura.canvas.width = 1000;
+        contextosensor4Temperatura.canvas.height = 300;
+        var sensor4Temperatura = new Chart(
+            contextosensor4Temperatura,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: "Temperatura",
+                        type: 'line',
+                        borderColor: ['#48D1CC'],
+                        backgroundColor: ['#48D1CC']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Luminosidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
+                /* -- dht11Umidade -- */
+                var contextosensor5Umidade = document.getElementById('sensor5Umidade').getContext('2d');
+        contextosensor5Umidade.canvas.width = 1000;
+        contextosensor5Umidade.canvas.height = 300;
+        var sensor5Umidade = new Chart(
+            contextosensor5Umidade,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Umidade',
+                        type: 'line',
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Umidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
+        /* -- dht11Temperatura -- */
+        var contextosensor6Temperatura = document.getElementById('sensor6Temperatura').getContext('2d');
+        contextosensor6Temperatura.canvas.width = 1000;
+        contextosensor6Temperatura.canvas.height = 300;
+        var sensor6Temperatura = new Chart(
+            contextosensor6Temperatura,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: "Temperatura",
+                        type: 'line',
+                        borderColor: ['#00FA9A'],
+                        backgroundColor: ['#00FA9A']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Luminosidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
+                        /* -- dht11Umidade -- */
+                        var contextosensor7Umidade = document.getElementById('sensor7Umidade').getContext('2d');
+        contextosensor7Umidade.canvas.width = 1000;
+        contextosensor7Umidade.canvas.height = 300;
+        var sensor7Umidade = new Chart(
+            contextosensor7Umidade,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Umidade',
+                        type: 'line',
+                        borderColor: ['#ADFF2F'],
+                        backgroundColor: ['#ADFF2F']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Umidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
+        /* -- dht11Temperatura -- */
+        var contextosensor8Temperatura = document.getElementById('sensor8Temperatura').getContext('2d');
+        contextosensor8Temperatura.canvas.width = 1000;
+        contextosensor8Temperatura.canvas.height = 300;
+        var sensor8Temperatura = new Chart(
+            contextosensor8Temperatura,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: "Temperatura",
+                        type: 'line',
+                        borderColor: ['#DAA520'],
+                        backgroundColor: ['#DAA520']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Luminosidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
+        var paginacao = {};
+        var tempo = {};
+        function obterDados(grafico, endpoint) {
+            var http = new XMLHttpRequest();
+            http.open('GET', 'http://localhost:3300/sensores/' + endpoint, false);
+            http.send(null);
+            var valores = JSON.parse(http.responseText);
+            if (paginacao[endpoint] == null) {
+                paginacao[endpoint] = 0;
+            }
+            if (tempo[endpoint] == null) {
+                tempo[endpoint] = 0;
+            }
+            // Exibir à partir do último elemento exibido anteriormente
+            var ultimaPaginacao = paginacao[endpoint];
+            paginacao[endpoint] = valores.length;
+            var valores = valores.slice(ultimaPaginacao);
+            valores.forEach((valor) => {
+                //Máximo de 60 itens exibidos no gráfico
+                if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                    grafico.data.labels.shift();
+                    grafico.data.datasets[0].data.shift();
+                }
+
+                grafico.data.labels.push(tempo[endpoint]++);
+                grafico.data.datasets[0].data.push(parseFloat(valor));
+                grafico.update();
+            })
+        }
+
+        setInterval(() => {
+
+            obterDados(dht11Umidade, 'dht11/umidade');
+            obterDados(dht11Temperatura, 'dht11/temperatura');
+            obterDados(sensor1Umidade,'dht11/umidade01');
+            obterDados(dht11Temperatura2, 'dht11/temperatura01');
+            obterDados(sensor3Umidade, 'dht11/umidade02');
+            obterDados(sensor4Temperatura, 'dht11/temperatura02');
+            obterDados(sensor5Umidade, 'dht11/umidade03');
+            obterDados(sensor6Temperatura, 'dht11/temperatura03');
+            obterDados(sensor7Umidade, 'dht11/umidade04');
+            obterDados(sensor8Temperatura, 'dht11/temperatura04');
+
+        }, 1000);
+
+    </script>
+</body>
+
+</html>
